@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#8e0b2a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Open Day Events Schedule - University of Wolverhampton</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the events page */
+        .back-button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-button i {
+            margin-right: 5px;
+        }
+        
+        .event-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .event-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        .event-item h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .event-time {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .event-location {
+            margin: 15px 0;
+            color: var(--gray-color);
+        }
+        
+        .event-location i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+        
+        .add-calendar {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .add-calendar:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Header styling */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            margin-top: 70px; /* Space for fixed navigation */
+        }
+        
+        .page-title {
+            text-align: center;
+            margin: 0;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header (same as main page) -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Logo.png" alt="University of Wolverhampton Logo">
+                </a>
+            </div>
+            <!-- Main navigation menu with anchor links to page sections -->
+            <ul class="nav-links">
+                <li><a href="index.html#events">Events</a></li>
+                <li><a href="campus_tours.html">Campus Tour</a></li>
+                <li><a href="index.html#life">University Life</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#register" class="register-btn">Register Now</a></li>
+            </ul>
+            <!-- Mobile hamburger menu -->
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Open Day Events Schedule</h1>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <section class="section">
+        <div class="container">
+            <a href="index.html#events" class="back-button"><i class="fas fa-arrow-left"></i> Back to Open Day</a>
+            
+            <div class="event-list">
+                <div class="event-item">
+                    <div class="event-time">10:00 - 11:30</div>
+                    <h3>Welcome Talk</h3>
+                    <p>Learn about our university, courses, and admission process</p>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Main Auditorium
+                    </div>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20Open%20Day:%20Welcome%20Talk&dates=20250515T100000Z/20250515T113000Z&details=Learn%20about%20our%20university,%20courses,%20and%20admission%20process&location=Main%20Auditorium&sf=true&output=xml" target="_blank" class="add-calendar">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-time">11:45 - 13:00</div>
+                    <h3>Subject Taster Sessions</h3>
+                    <p>Experience interactive lessons in your chosen subject area</p>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Faculty Buildings
+                    </div>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20Open%20Day:%20Subject%20Taster%20Sessions&dates=20250515T114500Z/20250515T130000Z&details=Experience%20interactive%20lessons%20in%20your%20chosen%20subject%20area&location=Faculty%20Buildings&sf=true&output=xml" target="_blank" class="add-calendar">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-time">13:00 - 14:00</div>
+                    <h3>Lunch Break</h3>
+                    <p>Enjoy complimentary refreshments and meet current students</p>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Student Union
+                    </div>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20Open%20Day:%20Lunch%20Break&dates=20250515T130000Z/20250515T140000Z&details=Enjoy%20complimentary%20refreshments%20and%20meet%20current%20students&location=Student%20Union&sf=true&output=xml" target="_blank" class="add-calendar">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-time">14:15 - 15:30</div>
+                    <h3>Finance and Accommodation Talk</h3>
+                    <p>Get essential information about student funding and housing options</p>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Harrison Learning Centre
+                    </div>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20Open%20Day:%20Finance%20and%20Accommodation%20Talk&dates=20250515T141500Z/20250515T153000Z&details=Get%20essential%20information%20about%20student%20funding%20and%20housing%20options&location=Harrison%20Learning%20Centre&sf=true&output=xml" target="_blank" class="add-calendar">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-time">15:45 - 16:30</div>
+                    <h3>Student Life Panel</h3>
+                    <p>Hear from current students about their experiences</p>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Chancellor's Hall
+                    </div>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20Open%20Day:%20Student%20Life%20Panel&dates=20250515T154500Z/20250515T163000Z&details=Hear%20from%20current%20students%20about%20their%20experiences&location=Chancellor's%20Hall&sf=true&output=xml" target="_blank" class="add-calendar">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-time">16:30 - 17:30</div>
+                    <h3>Networking Reception</h3>
+                    <p>Chat with staff and students over light refreshments</p>
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> Ambika Paul Building
+                    </div>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20Open%20Day:%20Networking%20Reception&dates=20250515T163000Z/20250515T173000Z&details=Chat%20with%20staff%20and%20students%20over%20light%20refreshments&location=Ambika%20Paul%20Building&sf=true&output=xml" target="_blank" class="add-calendar">
+                        <i class="far fa-calendar-plus"></i> Add to Calendar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main page) -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="Logo.png" alt="University of Wolverhampton Logo">
+                </div>
+                <!-- Footer navigation organized in columns -->
+                <div class="footer-nav">
+                    <div class="footer-nav-col">
+                        <h4>Study</h4>
+                        <ul>
+                            <li><a href="#">Undergraduate</a></li>
+                            <li><a href="#">Postgraduate</a></li>
+                            <li><a href="#">International</a></li>
+                            <li><a href="#">Part-time</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-col">
+                        <h4>About</h4>
+                        <ul>
+                            <li><a href="#">Our History</a></li>
+                            <li><a href="#">Campus Locations</a></li>
+                            <li><a href="#">Faculties</a></li>
+                            <li><a href="#">Research</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-col">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Student Services</a></li>
+                            <li><a href="#">Accommodation</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Disability Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright and legal links -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 University of Wolverhampton. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript file for interactive functionality -->
+    <script src="script.js"></script>
+</body>
+</html>
