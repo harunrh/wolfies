@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Testimonial slider functionality - FIXED
+    // Testimonial slider functionality
     function initTestimonialSlider() {
         const testimonials = document.querySelectorAll('.testimonial');
         const prevButton = document.getElementById('prev-testimonial');
@@ -163,56 +163,62 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalButton = document.getElementById('closeModal');
     
     if (openDayForm) {
-        // Update form action to the correct processing script
-        openDayForm.setAttribute('action', 'register_process.php');
-        openDayForm.setAttribute('method', 'post');
+        // Client-side form validation
+        openDayForm.addEventListener('submit', function(e) {
+            // Basic form validation
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const studyLevel = document.getElementById('studyLevel').value;
+            const subjectInterest = document.getElementById('subjectInterest').value;
+            const termsAgree = document.getElementById('termsAgree').checked;
+            
+            if (!fullName || !email || !studyLevel || !subjectInterest || !termsAgree) {
+                e.preventDefault();
+                alert('Please fill in all required fields marked with *');
+                return;
+            }
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                e.preventDefault();
+                alert('Please enter a valid email address');
+                return;
+            }
+        });
+    }
+    
+    // Check for URL parameters to show success modal
+    function checkUrlStatus() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
         
-        // Check for query parameter to show success modal
-        if (window.location.search.includes('registration=success')) {
+        if (status === 'success') {
+            // Show success modal
             if (successModal) {
                 successModal.style.display = 'flex';
+                
+                // Scroll to register section for better visibility
+                const registerSection = document.getElementById('register');
+                if (registerSection) {
+                    registerSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             }
+        } else if (status === 'error') {
+            // Show error message
+            alert('There was an error processing your registration. Please try again.');
         }
         
-        // Remove data-demo if this is a production environment
-        if (openDayForm.getAttribute('data-demo') === 'true') {
-            console.log('Form in demo mode - client-side validation only');
-            
-            openDayForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Basic form validation
-                const fullName = document.getElementById('fullName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const studyLevel = document.getElementById('studyLevel').value;
-                const subjectInterest = document.getElementById('subjectInterest').value;
-                const termsAgree = document.getElementById('termsAgree').checked;
-                
-                if (!fullName || !email || !studyLevel || !subjectInterest || !termsAgree) {
-                    alert('Please fill in all required fields marked with *');
-                    return;
-                }
-                
-                // Email validation
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(email)) {
-                    alert('Please enter a valid email address');
-                    return;
-                }
-                
-                // Show success modal
-                if (successModal) {
-                    successModal.style.display = 'flex';
-                }
-                
-                // Reset form
-                openDayForm.reset();
-                if (specialRequirementsDetails) {
-                    specialRequirementsDetails.classList.add('hidden');
-                }
-            });
+        // Clear the status parameter from URL (optional)
+        if (status) {
+            window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
         }
     }
+    
+    // Run status check
+    checkUrlStatus();
     
     // Close modal when X is clicked
     if (closeModalBtn) {
@@ -305,20 +311,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on load and resize
     checkMobileEvents();
     window.addEventListener('resize', checkMobileEvents);
-    
-    // Check for and display session messages
-    function checkSessionMessages() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('error') || urlParams.has('success')) {
-            const targetSection = document.getElementById('register');
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }
-    
-    // Run session message check
-    checkSessionMessages();
 });
