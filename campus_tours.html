@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#8e0b2a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Campus Tours - University of Wolverhampton</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the campus tours page */
+        .back-button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-button i {
+            margin-right: 5px;
+        }
+        
+        /* Header styling */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            margin-top: 70px; /* Space for fixed navigation */
+        }
+        
+        .page-title {
+            text-align: center;
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        /* Campus cards for all devices */
+        .campus-details {
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .campus-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            padding: 25px;
+        }
+        
+        .campus-card h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+        
+        .campus-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .campus-text p {
+            margin-bottom: 15px;
+        }
+        
+        .campus-facilities {
+            margin: 20px 0;
+        }
+        
+        .campus-facilities h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .facilities-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .facilities-list li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .facilities-list i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .campus-map {
+            margin-top: 20px;
+        }
+        
+        .campus-map iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            border: 0;
+        }
+        
+        .tour-times {
+            margin-top: 30px;
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .tour-times h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .tour-schedule {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tour-time-slot {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .campus-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .facilities-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header (same as main page) -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Logo.png" alt="University of Wolverhampton Logo">
+                </a>
+            </div>
+            <!-- Main navigation menu with anchor links to page sections -->
+            <ul class="nav-links">
+                <li><a href="index.html#events">Events</a></li>
+                <li><a href="campus_tours.html">Campus Tour</a></li>
+                <li><a href="index.html#life">University Life</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#register" class="register-btn">Register Now</a></li>
+            </ul>
+            <!-- Mobile hamburger menu -->
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Campus Tours</h1>
+        </div>
+    </div>
+
+    <!-- Campus Tours Section -->
+    <section class="section">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Open Day</a>
+            
+            <p class="section-subtitle">Explore our state-of-the-art facilities and vibrant campuses. Tours run throughout the Open Day, starting every 30 minutes from the Main Reception at each location.</p>
+            
+            <div class="campus-details">
+                <!-- City Campus -->
+                <div class="campus-card">
+                    <h3>City Campus Wolverhampton</h3>
+                    <div class="campus-info">
+                        <div class="campus-text">
+                            <p>Our main campus located in the heart of Wolverhampton city center. This vibrant campus houses most of our academic schools and is home to our state-of-the-art facilities including the Science Centre and Business School.</p>
+                            
+                            <div class="campus-facilities">
+                                <h4>Key Facilities:</h4>
+                                <ul class="facilities-list">
+                                    <li><i class="fas fa-check"></i> Harrison Learning Centre</li>
+                                    <li><i class="fas fa-check"></i> Science Centre</li>
+                                    <li><i class="fas fa-check"></i> Business School</li>
+                                    <li><i class="fas fa-check"></i> Student Union</li>
+                                    <li><i class="fas fa-check"></i> Sports Centre</li>
+                                    <li><i class="fas fa-check"></i> City Campus Gym</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tour-times">
+                                <h4>Tour Times:</h4>
+                                <div class="tour-schedule">
+                                    <span class="tour-time-slot">10:00</span>
+                                    <span class="tour-time-slot">10:30</span>
+                                    <span class="tour-time-slot">11:00</span>
+                                    <span class="tour-time-slot">11:30</span>
+                                    <span class="tour-time-slot">12:00</span>
+                                    <span class="tour-time-slot">13:30</span>
+                                    <span class="tour-time-slot">14:00</span>
+                                    <span class="tour-time-slot">14:30</span>
+                                    <span class="tour-time-slot">15:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="campus-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.9801138425496!2d-2.130058025016915!3d52.588052772079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487083cb0f37dc97%3A0x9cb8e3cc0509a0d0!2sUniversity%20of%20Wolverhampton!5e0!3m2!1sen!2suk!4v1740067245124!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a href="https://goo.gl/maps/QY8JHK8JjB6vMKqU8" target="_blank" class="cta-button-alt" style="display: inline-block; margin-top: 15px;">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Walsall Campus -->
+                <div class="campus-card">
+                    <h3>Walsall Campus</h3>
+                    <div class="campus-info">
+                        <div class="campus-text">
+                            <p>Home to our sports facilities and School of Education, the Walsall Campus offers modern teaching facilities and a friendly, supportive environment. The campus features specialist sports facilities including an indoor sports hall, fitness suite, and all-weather pitches.</p>
+                            
+                            <div class="campus-facilities">
+                                <h4>Key Facilities:</h4>
+                                <ul class="facilities-list">
+                                    <li><i class="fas fa-check"></i> Performance Hub</li>
+                                    <li><i class="fas fa-check"></i> Sports Complex</li>
+                                    <li><i class="fas fa-check"></i> School of Education</li>
+                                    <li><i class="fas fa-check"></i> Student Village</li>
+                                    <li><i class="fas fa-check"></i> Learning Centre</li>
+                                    <li><i class="fas fa-check"></i> all-Weather Pitches</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tour-times">
+                                <h4>Tour Times:</h4>
+                                <div class="tour-schedule">
+                                    <span class="tour-time-slot">10:00</span>
+                                    <span class="tour-time-slot">11:00</span>
+                                    <span class="tour-time-slot">12:00</span>
+                                    <span class="tour-time-slot">13:00</span>
+                                    <span class="tour-time-slot">14:00</span>
+                                    <span class="tour-time-slot">15:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="campus-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2424.5731068970247!2d-1.9746273842117144!3d52.57747297982753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487083fb07c4e8a3%3A0xe66efadc7a5f30e3!2sUniversity%20of%20Wolverhampton%20Walsall%20Campus!5e0!3m2!1sen!2suk!4v1700065892332!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a href="https://goo.gl/maps/EjNuvEcmR7K1MjNr8" target="_blank" class="cta-button-alt" style="display: inline-block; margin-top: 15px;">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Telford Campus -->
+                <div class="campus-card">
+                    <h3>Telford Innovation Campus</h3>
+                    <div class="campus-info">
+                        <div class="campus-text">
+                            <p>Our innovation campus focused on engineering and business, providing a cutting-edge environment for students interested in technology and innovation. The campus features specialist engineering facilities and strong links with industry partners.</p>
+                            
+                            <div class="campus-facilities">
+                                <h4>Key Facilities:</h4>
+                                <ul class="facilities-list">
+                                    <li><i class="fas fa-check"></i> Engineering Labs</li>
+                                    <li><i class="fas fa-check"></i> Innovation Hub</li>
+                                    <li><i class="fas fa-check"></i> Business Incubator</li>
+                                    <li><i class="fas fa-check"></i> Design Studio</li>
+                                    <li><i class="fas fa-check"></i> Computer Labs</li>
+                                    <li><i class="fas fa-check"></i> Meeting Spaces</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="tour-times">
+                                <h4>Tour Times:</h4>
+                                <div class="tour-schedule">
+                                    <span class="tour-time-slot">10:30</span>
+                                    <span class="tour-time-slot">11:30</span>
+                                    <span class="tour-time-slot">12:30</span>
+                                    <span class="tour-time-slot">13:30</span>
+                                    <span class="tour-time-slot">14:30</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="campus-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2420.483032057532!2d-2.4483122841862687!3d52.67211967984101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a8014ee6b1c9d%3A0x4b280cf4f2bb1cdf!2sUniversity%20of%20Wolverhampton%20Telford%20Innovation%20Campus!5e0!3m2!1sen!2suk!4v1700065988663!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a href="https://goo.gl/maps/VLVj9igrkhqvrhct5" target="_blank" class="cta-button-alt" style="display: inline-block; margin-top: 15px;">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Virtual tour option -->
+                <div class="campus-card">
+                    <h3>Virtual Tours</h3>
+                    <p>Can't attend in person? Take a virtual tour of our campuses and explore our facilities from anywhere. Our immersive 360° virtual tours allow you to see lecture halls, accommodation, and social spaces at your own pace.</p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="#" class="cta-button">Start Virtual Tour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main page) -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="Logo.png" alt="University of Wolverhampton Logo">
+                </div>
+                <!-- Footer navigation organized in columns -->
+                <div class="footer-nav">
+                    <div class="footer-nav-col">
+                        <h4>Study</h4>
+                        <ul>
+                            <li><a href="#">Undergraduate</a></li>
+                            <li><a href="#">Postgraduate</a></li>
+                            <li><a href="#">International</a></li>
+                            <li><a href="#">Part-time</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-col">
+                        <h4>About</h4>
+                        <ul>
+                            <li><a href="#">Our History</a></li>
+                            <li><a href="#">Campus Locations</a></li>
+                            <li><a href="#">Faculties</a></li>
+                            <li><a href="#">Research</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-col">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Student Services</a></li>
+                            <li><a href="#">Accommodation</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Disability Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright and legal links -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 University of Wolverhampton. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript file for interactive functionality -->
+    <script src="script.js"></script>
+</body>
+</html>
