@@ -438,15 +438,6 @@
             
             <!-- Success/Error Messages -->
             <div id="form-messages">
-                <?php if(isset($_SESSION['success_message']) && !empty($_SESSION['success_message'])): ?>
-                <div class="success-message"><?php echo $_SESSION['success_message']; ?></div>
-                <?php unset($_SESSION['success_message']); ?>
-                <?php endif; ?>
-                
-                <?php if(isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])): ?>
-                <div class="error-message"><?php echo $_SESSION['error_message']; ?></div>
-                <?php unset($_SESSION['error_message']); ?>
-                <?php endif; ?>
             </div>
             
             <!-- Two-column layout: benefits and registration form -->
@@ -463,7 +454,7 @@
                 
                 <!-- Registration form with various input fields -->
                 <div class="register-form">
-                    <form id="openDayForm" action="register_process.php" method="post">
+                    <form id="openDayForm" action="process_form.php" method="post">
                         <div class="form-group">
                             <label for="fullName">Full Name*</label>
                             <input type="text" id="fullName" name="fullName" required>
