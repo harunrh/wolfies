@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Life</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    {% include 'index1.twig' %}
+    <main class="py-5">
+        <div class="container">
+            <section class="content-section bg-white shadow-sm rounded-lg p-4 p-md-5">
+                <h1 class="mb-4 text-center" data-aos="fade-up">University Life</h1>
+                <p class="lead mb-5 text-center" data-aos="fade-up" data-aos-delay="100">Discover the vibrant and diverse student life at our university.</p>
+                
+                <!-- University Life Video/Image Banner -->
+                <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ratio ratio-16x9 rounded-3 shadow-sm overflow-hidden">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="University Life Video" allowfullscreen></iframe>
+                    </div>
+                    <div class="text-center mt-3">
+                        <small class="text-muted">Experience life on campus through the eyes of our students</small>
+                    </div>
+                </div>
+                
+                <!-- University Life Sections -->
+                <div class="university-life-sections">
+                    <div class="row g-4">
+                        <!-- Loop through universityLife array to display different sections -->
+                        {% for key, section in universityLife %}
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ 300 + loop.index0 * 100 }}">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <img src="{{ section.image }}" alt="{{ section.title }}" class="card-img-top">
+                                <div class="card-body">
+                                    <h2 class="card-title h4">{{ section.title }}</h2>
+                                    <p class="card-text">{{ section.description }}</p>
+                                    <!-- Conditional links based on section type -->
+                                    {% if key == 'accommodation' %}
+                                        <a href="accommodation.php" class="btn btn-outline-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                                    {% elseif key == 'clubs' %}
+                                        <a href="clubs.php" class="btn btn-outline-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                                    {% elseif key == 'support' %}
+                                        <a href="support.php" class="btn btn-outline-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                                    {% else %}
+                                        <a href="#" class="btn btn-outline-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Student Life Highlights -->
+                <div class="mt-5" data-aos="fade-up" data-aos-delay="800">
+                    <h2 class="text-center mb-4">Student Life Highlights</h2>
+                    
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <!-- Timeline of Student Events -->
+                            <div class="timeline">
+                                <div class="timeline-item mb-4 position-relative ps-4">
+                                    <div class="timeline-marker bg-primary"></div>
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-2">Freshers' Week</h3>
+                                            <p class="small text-muted mb-2">September</p>
+                                            <p>Your introduction to university life starts with Freshers' Week! Join a variety of events, meet new friends, and get to know the campus.</p>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-calendar-event me-2 text-primary"></i>
+                                                <span>Events include welcome parties, campus tours, and society fairs</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item mb-4 position-relative ps-4">
+                                    <div class="timeline-marker bg-primary"></div>
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-2">University Sports</h3>
+                                            <p class="small text-muted mb-2">Year-round</p>
+                                            <p>Join one of our competitive sports teams or participate in recreational activities at our state-of-the-art sports facilities.</p>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-trophy me-2 text-primary"></i>
+                                                <span>Over 30 sports clubs from football to rock climbing</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item mb-4 position-relative ps-4">
+                                    <div class="timeline-marker bg-primary"></div>
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-2">Cultural Festivals</h3>
+                                            <p class="small text-muted mb-2">Throughout the year</p>
+                                            <p>Celebrate diversity with various cultural festivals and events organized by our international student community.</p>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-globe me-2 text-primary"></i>
+                                                <span>Experience food, music, and traditions from around the world</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item position-relative ps-4">
+                                    <div class="timeline-marker bg-primary"></div>
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-2">End of Year Ball</h3>
+                                            <p class="small text-muted mb-2">June</p>
+                                            <p>Celebrate the end of the academic year in style with our formal End of Year Ball featuring dining, dancing, and entertainment.</p>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-stars me-2 text-primary"></i>
+                                                <span>A glamorous night to remember with your fellow students</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student Testimonials -->
+                <div class="mt-5 py-4 px-3 bg-light rounded-3" data-aos="fade-up" data-aos-delay="900">
+                    <h2 class="text-center mb-4">What Our Students Say</h2>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="testimonial-card text-center p-4">
+                                            <div class="avatar mx-auto mb-4">
+                                                <img src="images/student1.jpg" alt="Emily" class="rounded-circle" width="80">
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p class="lead fst-italic mb-3">"Joining societies was the best decision I made at university. I've made lifelong friends and developed so many new skills."</p>
+                                                <h5 class="mb-1">Emily Johnson</h5>
+                                                <p class="small text-muted">Third Year, Psychology</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="testimonial-card text-center p-4">
+                                            <div class="avatar mx-auto mb-4">
+                                                <img src="images/student2.jpg" alt="Michael" class="rounded-circle" width="80">
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p class="lead fst-italic mb-3">"Living in university accommodation was a fantastic experience. I met people from all over the world and always had something fun to do."</p>
+                                                <h5 class="mb-1">Michael Chen</h5>
+                                                <p class="small text-muted">Second Year, Computer Science</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="testimonial-card text-center p-4">
+                                            <div class="avatar mx-auto mb-4">
+                                                <img src="images/student3.jpg" alt="Sophia" class="rounded-circle" width="80">
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p class="lead fst-italic mb-3">"The support services have been incredible throughout my studies. Whether I needed academic advice or personal support, someone was always there to help."</p>
+                                                <h5 class="mb-1">Sophia Williams</h5>
+                                                <p class="small text-muted">Final Year, Business Management</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <div class="carousel-indicators position-relative mt-3">
+                                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" class="bg-primary" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" class="bg-primary" aria-label="Slide 3"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Campus Map and Locations -->
+                <div class="mt-5" data-aos="fade-up" data-aos-delay="1000">
+                    <h2 class="text-center mb-4">Campus Life Locations</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h3 class="h5 mb-3">Popular Student Spots</h3>
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item bg-transparent px-0 py-3 d-flex">
+                                            <div class="icon-box bg-light rounded-circle me-3 p-2">
+                                                <i class="bi bi-cup-hot text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="h6 mb-1">The Hub Café</h4>
+                                                <p class="small mb-0">The central meeting point for students with great coffee and snacks</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-3 d-flex">
+                                            <div class="icon-box bg-light rounded-circle me-3 p-2">
+                                                <i class="bi bi-book text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="h6 mb-1">Learning Resource Center</h4>
+                                                <p class="small mb-0">Modern library with quiet study spaces and group work areas</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-3 d-flex">
+                                            <div class="icon-box bg-light rounded-circle me-3 p-2">
+                                                <i class="bi bi-people text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="h6 mb-1">Student Union Building</h4>
+                                                <p class="small mb-0">Home to societies, events, and the popular student bar</p>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-3 d-flex">
+                                            <div class="icon-box bg-light rounded-circle me-3 p-2">
+                                                <i class="bi bi-dribbble text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="h6 mb-1">Sports Center</h4>
+                                                <p class="small mb-0">State-of-the-art gym, swimming pool, and sports facilities</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h3 class="h5 mb-3">Campus Map</h3>
+                                    <div id="campus-life-map" class="rounded mb-3" style="height: 300px;"></div>
+                                    <p class="small text-muted">Explore key locations on our campus. Click on markers for more information.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Call to Action: Virtual Tour -->
+                <div class="mt-5 text-center" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="p-4 p-md-5 bg-primary text-white rounded-3">
+                        <h2 class="mb-3">Take a Virtual Tour</h2>
+                        <p class="lead mb-4">Can't visit in person? Explore our campus from the comfort of your home with our immersive virtual tour.</p>
+                        <a href="#" class="btn btn-light btn-lg">
+                            <i class="bi bi-arrows-fullscreen me-2"></i>Launch Virtual Tour
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Student Accommodation Section -->
+                <div class="mt-5" data-aos="fade-up" data-aos-delay="1200">
+                    <h2 class="text-center mb-4">Student Accommodation</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <img src="images/accommodation.jpg" class="card-img-top" alt="Student Accommodation" style="height: 250px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h3 class="h5 mb-3">Comfortable Living Options</h3>
+                                    <p>We offer a range of accommodation options to suit different preferences and budgets, from modern halls of residence to private housing options.</p>
+                                    <p class="mb-0"><strong>Features include:</strong></p>
+                                    <ul class="mt-2 mb-4">
+                                        <li>Fully furnished rooms</li>
+                                        <li>High-speed internet access</li>
+                                        <li>Communal kitchen and living areas</li>
+                                        <li>24/7 security and support</li>
+                                    </ul>
+                                    <a href="accommodation_application.php" class="btn btn-primary">Apply for Accommodation <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h3 class="h5 mb-3">Accommodation Benefits</h3>
+                                    <div class="list-group list-group-flush mb-4">
+                                        <div class="list-group-item bg-transparent px-0 py-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i> Convenient locations near campus
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i> Modern facilities and utilities included
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i> 24/7 security and support staff
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i> Various room types and layouts
+                                        </div>
+                                        <div class="list-group-item bg-transparent px-0 py-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i> Vibrant student community
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card bg-light border-0 p-4 mb-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="icon-box bg-white me-3">
+                                                <i class="bi bi-info-circle text-primary"></i>
+                                            </div>
+                                            <h4 class="h6 mb-0">Application Deadline</h4>
+                                        </div>
+                                        <p class="small mb-0">Applications for the upcoming academic year should be submitted by July 1st for priority consideration. Late applications will be processed based on availability.</p>
+                                    </div>
+                                    
+                                    <a href="accommodation_application.php" class="btn btn-outline-primary w-100">Apply Now <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    {% include 'index2.twig' %}
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Google Maps API for Campus Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiTe13HtEMtgz_fHiPu00RUmol0VpBSek&callback=initCampusLifeMap" async defer></script>
+    <!-- Custom Scripts -->
+    <script src="js/scripts.js"></script>
+    
+    <script>
+        // Initialize campus life map
+        function initCampusLifeMap() {
+            // University location
+            const universityLocation = { lat: 52.5874, lng: -2.1278 };
+            
+            // Create map
+            const map = new google.maps.Map(document.getElementById('campus-life-map'), {
+                zoom: 16,
+                center: universityLocation,
+                mapTypeControl: true,
+                streetViewControl: true,
+                fullscreenControl: true,
+                styles: [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#6a1b9a"}]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [{"color": "#f5f5f5"}]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "on"}]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [{"saturation": -100}, {"lightness": 45}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "simplified"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [{"color": "#9c27b0"}, {"visibility": "on"}]
+                    }
+                ]
+            });
+            
+            // Add markers for key locations
+            const locations = [
+                { name: 'The Hub Café', lat: 52.5874, lng: -2.1278, icon: 'bi-cup-hot' },
+                { name: 'Learning Resource Center', lat: 52.5880, lng: -2.1285, icon: 'bi-book' },
+                { name: 'Student Union Building', lat: 52.5869, lng: -2.1270, icon: 'bi-people' },
+                { name: 'Sports Center', lat: 52.5885, lng: -2.1265, icon: 'bi-dribbble' }
+            ];
+            
+            // Add markers to map
+            locations.forEach(location => {
+                const marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.name,
+                    animation: google.maps.Animation.DROP
+                });
+                
+                // Add info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<div><h5>${location.name}</h5><p>A popular student location</p></div>`
+                });
+                
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
