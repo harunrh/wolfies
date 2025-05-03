@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Experience | Open Day</title>
+    <title>University Life | Open Day</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -18,41 +18,104 @@
     <main class="py-5">
         <div class="container">
             <section class="content-section bg-white shadow-sm rounded-lg p-4 p-md-5">
-                <h1 class="mb-4 text-center" data-aos="fade-up">Student Experience</h1>
-                <p class="lead mb-5 text-center" data-aos="fade-up" data-aos-delay="100">Discover what it's like to be a student at our university.</p>
+                <h1 class="mb-4 text-center" data-aos="fade-up">University Life at Wolverhampton</h1>
+                <p class="lead mb-5 text-center" data-aos="fade-up" data-aos-delay="100">Experience the vibrant community and rich opportunities at the University of Wolverhampton.</p>
                 
-                <!-- Student Life Video Banner -->
-                <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
-                    <div class="ratio ratio-16x9 rounded-3 shadow-sm overflow-hidden">
-                        <iframe src="https://www.youtube.com/embed/Bb_B5HyywQ4" title="University Life Video" allowfullscreen></iframe>
-                    </div>
-                    <div class="text-center mt-3">
-                        <small class="text-muted">Get a glimpse of our campus and student life</small>
-                    </div>
-                </div>
-                
-                <!-- University Life Sections -->
-                <div class="university-life-sections">
-                    <div class="row g-4">
-                        <!-- Loop through universityLife array to display different sections -->
-                        {% for key, section in universityLife %}
-                        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ 300 + loop.index0 * 100 }}">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <img src="{{ section.image }}" alt="{{ section.title }}" class="card-img-top" style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h2 class="card-title h5">{{ section.title }}</h2>
-                                    <p class="card-text">{{ section.description }}</p>
-                                    <!-- All links now point to clubs.php since that's the only detailed subpage we're keeping -->
-                                    <a href="clubs.php" class="btn btn-sm btn-outline-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                <!-- Main sections -->
+                <div class="row g-4 mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Learning Environment -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-light rounded-circle me-3">
+                                        <i class="bi bi-book text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 mb-0">Learning Environment</h3>
                                 </div>
+                                <p class="mb-0">Our students enjoy modern lecture theaters, state-of-the-art laboratories, and extensive library resources. The Harrison Learning Centre provides 24/7 study spaces, IT facilities, and quiet zones for individual work.</p>
                             </div>
                         </div>
-                        {% endfor %}
+                    </div>
+                    
+                    <!-- Student Community -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-light rounded-circle me-3">
+                                        <i class="bi bi-people text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 mb-0">Student Community</h3>
+                                </div>
+                                <p class="mb-0">Join a diverse community of students from over 120 countries. Our Student Union offers numerous clubs, societies, and events throughout the year, from cultural festivals to sports competitions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Campus Life -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-light rounded-circle me-3">
+                                        <i class="bi bi-building text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 mb-0">Campus Facilities</h3>
+                                </div>
+                                <p class="mb-0">Our Wolverhampton campuses feature modern sports facilities, including the University gym, swimming pool, and sports hall. The student-friendly spaces include cafeterias, common rooms, and study areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- City Integration -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-light rounded-circle me-3">
+                                        <i class="bi bi-geo-alt text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 mb-0">City Integration</h3>
+                                </div>
+                                <p class="mb-0">Located in the heart of Wolverhampton, students enjoy easy access to the city centre's shops, restaurants, and entertainment venues. The Mander Shopping Centre and historic Grand Theatre are just minutes away.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Support Services -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-light rounded-circle me-3">
+                                        <i class="bi bi-heart text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 mb-0">Student Support</h3>
+                                </div>
+                                <p class="mb-0">Access comprehensive support services including academic advisors, counselling, disability support, and financial guidance. Our student mentors and peer support networks help you settle into university life.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cultural Life -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-box bg-light rounded-circle me-3">
+                                        <i class="bi bi-palette text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 mb-0">Cultural Life</h3>
+                                </div>
+                                <p class="mb-0">Experience Wolverhampton's rich cultural scene with regular exhibitions, performances, and cultural events. The University actively participates in city festivals and maintains strong ties with local cultural institutions.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- A Day in the Life -->
-                <div class="mt-5 p-4 bg-light rounded-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="mt-5 mb-5" data-aos="fade-up" data-aos-delay="400">
                     <h2 class="text-center mb-4">A Day in the Life of a Student</h2>
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4 mb-lg-0">
@@ -93,52 +156,31 @@
                     </div>
                 </div>
                 
-                <!-- Student Testimonials Carousel -->
+                <!-- Student Testimonials -->
                 <div class="mt-5" data-aos="fade-up" data-aos-delay="500">
                     <h2 class="text-center mb-4">What Our Students Say</h2>
                     
-                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body text-center p-5">
-                                        <img src="images/student1.jpg" alt="Sarah" class="rounded-circle mb-4" width="100">
-                                        <p class="lead fst-italic mb-3">"The community at this university is incredible. I've made friends for life and learned so much both in and out of lectures."</p>
-                                        <h5 class="mb-1">Sarah, Computer Science</h5>
-                                        <p class="small text-muted">Second Year Student</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body text-center p-5">
-                                        <img src="images/student2.jpg" alt="James" class="rounded-circle mb-4" width="100">
-                                        <p class="lead fst-italic mb-3">"The campus facilities are top-notch, and there's always something happening. I've found it easy to balance my studies with social activities."</p>
-                                        <h5 class="mb-1">James, Business Studies</h5>
-                                        <p class="small text-muted">First Year Student</p>
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <img src="images/student1.jpg" alt="Sarah" class="rounded-circle mb-3" width="80">
+                                    <p class="fst-italic mb-3">"The community at Wolverhampton is incredible. I've made friends for life and learned so much both in and out of lectures."</p>
+                                    <h5 class="mb-1">Sarah, Computer Science</h5>
+                                    <p class="small text-muted">Second Year Student</p>
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- CTA for Open Day -->
-                <div class="mt-5 text-center" data-aos="fade-up" data-aos-delay="600">
-                    <div class="p-4 p-md-5 bg-primary text-white rounded-3">
-                        <h2 class="mb-3">Experience It Yourself</h2>
-                        <p class="lead mb-4">Join us for our next Open Day to see what student life is really like.</p>
-                        <a href="register.php" class="btn btn-light btn-lg">
-                            Register Now <i class="bi bi-calendar-check ms-2"></i>
-                        </a>
+                        <div class="col-md-6 mb-4">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <img src="images/student2.jpg" alt="James" class="rounded-circle mb-3" width="80">
+                                    <p class="fst-italic mb-3">"The campus facilities are top-notch, and there's always something happening. I've found it easy to balance my studies with social activities."</p>
+                                    <h5 class="mb-1">James, Business Studies</h5>
+                                    <p class="small text-muted">First Year Student</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
