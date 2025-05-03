@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Tour Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Include: Common header across all pages for consistency -->
+    {% include 'index1.twig' %}
+    
+    <main class="py-5">
+        <div class="container">
+            <section class="content-section bg-white shadow-sm rounded-lg p-4 p-md-5">
+                <h1 class="mb-4 text-center" data-aos="fade-up">Campus Tour</h1>
+                <p class="lead text-center mb-5" data-aos="fade-up" data-aos-delay="100">Discover our state-of-the-art facilities and beautiful campus grounds.</p>
+                
+                <!-- Gallery: Images of campus locations -->
+                <div class="row mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img src="images/hero.jpg" alt="Campus" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-text">Explore our campus with an interactive virtual tour.</p>
+                                <a href="#virtual-tour" class="btn btn-sm btn-outline-primary">View Virtual Tour</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img src="images/front.jpg" alt="Campus" class="card-img-top">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-quote fs-4 text-primary me-2"></i>
+                                    <p class="card-text fst-italic mb-0">"The campus has excellent facilities and a welcoming atmosphere."</p>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-muted">– Maria, Current Student</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Campus Map: Embedded Google Maps for campus navigation -->
+                <div class="campus-map mt-5" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="text-center mb-4">INTERACTIVE CAMPUS MAP</h2>
+                    <div class="card border-0 shadow-sm">
+                        <div id="map" style="height: 400px; width: 100%; border-radius: 8px;"></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3 class="h5 mb-3">Key Locations</h3>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <span class="badge bg-primary me-2">1</span> Main Building
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <span class="badge bg-primary me-2">2</span> Student Union
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <span class="badge bg-primary me-2">3</span> Library
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <span class="badge bg-primary me-2">4</span> Sports Center
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 class="h5 mb-3">Getting Here</h3>
+                                    <p>The university is conveniently located near the city center with excellent transport links.</p>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-train me-2 text-primary"></i>
+                                        <span>5 minute walk from Central Station</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-bus-front me-2 text-primary"></i>
+                                        <span>Bus routes 10, 12, and 15 stop outside</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-car-front me-2 text-primary"></i>
+                                        <span>Visitor parking available on campus</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Virtual Tour Section -->
+                <div id="virtual-tour" class="mt-5" data-aos="fade-up" data-aos-delay="400">
+                    <h2 class="text-center mb-4">VIRTUAL TOUR</h2>
+                    <div class="card border-0 shadow-sm">
+                        <div class="ratio ratio-16x9 rounded-top">
+                            <iframe src="https://www.youtube.com/embed/Bb_B5HyywQ4" title="Campus Virtual Tour" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 mb-3">Explore From Anywhere</h3>
+                            <p>Can't make it to an Open Day? Our virtual tour allows you to explore our campus from the comfort of your own home. Navigate through key buildings, facilities, and outdoor spaces to get a feel for university life.</p>
+                            <button class="btn btn-primary">Start 360° Tour <i class="bi bi-arrows-fullscreen"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book a Tour Section -->
+                <div class="mt-5 p-4 bg-light rounded-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="mb-3">Book a Campus Tour</h2>
+                            <p class="mb-0">Want to see our campus in person? Book a guided tour with one of our student ambassadors.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <a href="#" class="btn btn-primary">Book Tour <i class="bi bi-calendar-check"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    {% include 'index2.twig' %}
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiTe13HtEMtgz_fHiPu00RUmol0VpBSek&callback=initMap" async defer></script>
+    <!-- Custom Scripts -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

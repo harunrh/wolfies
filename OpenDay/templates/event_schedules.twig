@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Day Events | University of Wolverhampton</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* University of Wolverhampton Colors */
+        :root {
+            --wlv-purple: #6a1b9a;
+            --wlv-gold: #ffab00;
+        }
+        
+        /* Custom styles for event schedule */
+        .event-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--wlv-purple);
+            margin-bottom: 1.5rem;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .category-badge {
+            text-transform: capitalize;
+            margin-bottom: 0.5rem;
+        }
+        .category-general { background-color: var(--wlv-purple); }
+        .category-tour { background-color: #2e7d32; }
+        .category-academic { background-color: #0277bd; }
+        .category-student { background-color: #e65100; }
+        
+        .time-indicator {
+            font-weight: 600;
+            color: var(--wlv-purple);
+            min-width: 120px;
+        }
+        .location-info {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        /* University branded section styling */
+        .wlv-section {
+            background-color: #f8f8f8;
+            border-left: 4px solid var(--wlv-purple);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+        .wlv-section h3 {
+            color: var(--wlv-purple);
+            margin-bottom: 1rem;
+        }
+        
+        /* Hour divider */
+        .hour-divider {
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .hour-divider h3 {
+            background-color: var(--wlv-purple);
+            color: white;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        /* Toast notification */
+        .calendar-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+    </style>
+</head>
+<body>
+    {% include 'index1.twig' %}
+    <main class="py-5">
+        <div class="container">
+            <section class="content-section bg-white shadow-sm rounded-lg p-4 p-md-5">
+                <h1 class="mb-4 text-center">University of Wolverhampton Open Day</h1>
+                <p class="lead text-center mb-4">Plan your visit with our schedule of events</p>
+                
+                <!-- Toast notification -->
+                <div class="toast calendar-toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" id="calendarToast">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="bi bi-calendar-check me-2"></i>
+                            <span id="toastMessage">Event added to your calendar!</span>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+                
+                <!-- Filter by Category -->
+                {% if categories is defined and categories|length > 0 %}
+                <div class="mb-4">
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-outline-primary btn-sm filter-btn active" data-filter="all">All Events</button>
+                        {% for category in categories %}
+                            <button class="btn btn-outline-primary btn-sm filter-btn" data-filter="{{ category }}">
+                                {{ category|capitalize }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Events Timeline -->
+                {% if events is defined and events|length > 0 %}
+                <div class="events-timeline">
+                    {% set current_hour = "" %}
+                    {% for event in events %}
+                        {% if event.start_time is defined %}
+                            {% set event_hour = event.start_time|date("H") %}
+                            
+                            {% if event_hour != current_hour %}
+                                {% set current_hour = event_hour %}
+                                <div class="hour-divider text-center">
+                                    <h3>{{ event.start_time|date("g A") }}</h3>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="event-card card position-relative shadow-sm" 
+                                 data-event-category="{{ event.category|default('general') }}">
+                                
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-3 mb-3 mb-md-0">
+                                            <div class="d-flex align-items-center">
+                                                <span class="time-indicator">
+                                                    <i class="bi bi-clock me-2"></i>{{ event.start_time|date("g:i A") }} - {{ event.end_time|date("g:i A") }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 mb-3 mb-md-0">
+                                            <h4 class="card-title h5">{{ event.title }}</h4>
+                                            <p class="card-text mb-2">{{ event.description }}</p>
+                                            <div class="location-info">
+                                                <i class="bi bi-geo-alt me-2"></i>{{ event.location }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 text-md-end">
+                                            <span class="badge category-badge category-{{ event.category|default('general') }}">{{ event.category|default('general') }}</span>
+                                            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ event.title|url_encode }}&details={{ event.description|url_encode }}&location={{ event.location|url_encode }}&dates={{ event.start_time|date('Ymd\\THis') }}Z/{{ event.end_time|date('Ymd\\THis') }}Z" 
+                                               target="_blank" 
+                                               class="btn btn-sm btn-outline-primary mt-2 add-to-calendar-btn">
+                                                <i class="bi bi-calendar-plus me-1"></i>Add
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    No events scheduled yet. Check back later for updates.
+                </div>
+                {% endif %}
+                
+                <!-- University Info -->
+                <div class="wlv-section mt-5">
+                    <h3><i class="bi bi-info-circle me-2"></i>Open Day Information</h3>
+                    <div class="row">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-light rounded-circle me-3 p-2">
+                                    <i class="bi bi-geo-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6 mb-0">Campus Location</h5>
+                                    <p class="small mb-0">Wulfruna Street, Wolverhampton, WV1 1LY</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-light rounded-circle me-3 p-2">
+                                    <i class="bi bi-car-front text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6 mb-0">Parking</h5>
+                                    <p class="small mb-0">Available at Wulfrun Centre Car Park (WV1 3HG)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-light rounded-circle me-3 p-2">
+                                    <i class="bi bi-question-circle text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="h6 mb-0">Help Desk</h5>
+                                    <p class="small mb-0">Located in the main entrance of the Ambika Paul Building</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Download Section -->
+                <div class="text-center mt-5">
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=University%20of%20Wolverhampton%20Open%20Day&details=Full%20day%20of%20events%20to%20explore%20our%20campus%20and%20courses&location=Wulfruna%20Street,%20Wolverhampton,%20WV1%201LY&dates=20250515T093000Z/20250515T173000Z" 
+                       target="_blank" 
+                       class="btn btn-primary btn-lg">
+                        <i class="bi bi-calendar-plus me-2"></i>Add All Events to Calendar
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+    {% include 'index2.twig' %}
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/scripts.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true
+                });
+            }
+            
+            // Toast notification
+            const toastElement = document.getElementById('calendarToast');
+            const toast = new bootstrap.Toast(toastElement, {
+                delay: 3000
+            });
+            
+            // Add event listeners to calendar buttons
+            document.querySelectorAll('.add-to-calendar-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.getElementById('toastMessage').textContent = 'Event added to your calendar!';
+                    toast.show();
+                });
+            });
+            
+            // Filter events by category
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const eventCards = document.querySelectorAll('.event-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    // Show/hide events
+                    eventCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.eventCategory === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
