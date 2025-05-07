@@ -3,16 +3,29 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 session_start();
 // Include necessary files
 require_once __DIR__ . '/vendor/autoload.php';
 require_once 'db.php';
-
+require_once 'email.php';
 // Twig setup
 $loader = new \Twig\Loader\FilesystemLoader('OpenDay/templates');
 $twig = new \Twig\Environment($loader);
-
+//  A function for email section that makes sure the code is unique by looping through the existing ones in db
+// Produces a shoter code
+function smallCode($db, $length = 10) {
+    do {
+        $randomBytes = random_bytes(5); 
+        $registrationCode = strtoupper(base_convert(bin2hex($randomBytes), 16, 36));
+        $stmt = $db->prepare("SELECT id FROM members WHERE registration_code = ?");
+        $stmt->bind_param("s", $registrationCode);
+        $stmt->execute();
+        $stmt->store_result();
+        $exists = $stmt->num_rows > 0;
+        $stmt->close();
+    } while ($exists);
+    return $registrationCode;
+}
 // Helper to build consistent template variables
 function buildTemplateVars($extras = []) {
     $vars = [
@@ -33,7 +46,6 @@ function buildTemplateVars($extras = []) {
     
     return array_merge($vars, $extras);
 }
-
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullName = trim($_POST['full_name']);
@@ -84,20 +96,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     
     // Generate registration code
-    $registrationCode = bin2hex(random_bytes(32));
+    $registrationCode = smallCode($db);
     
     // Store in DB
     $stmt = $db->prepare("INSERT INTO members (full_name, email, study_level, subject_interest, number_of_guests, registration_code) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssss", $fullName, $email, $studyLevel, $subjectInterest, $numberGuests, $registrationCode);
     
     if ($stmt->execute()) {
-        // Send email
-        $verificationLink = "verify.php?code=" . $registrationCode;
-        $subject = "Open Day Registration Verification";
-        $message = "Please click the following link to verify your registration: " . $verificationLink;
-        $headers = "From: noreply@yourdomain.com";
-        
-        if (mail($email, $subject, $message, $headers)) {
+        // Use the verificationEmail function from email.php
+        if (verificationEmail($email, $fullName, $registrationCode)) {
             $_SESSION['registration_email'] = $email;
             header("Location: register_success.php");
             exit;
