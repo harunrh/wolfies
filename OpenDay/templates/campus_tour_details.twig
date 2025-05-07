@@ -19,36 +19,6 @@
     <main class="py-5">
         <div class="container">
             <section class="content-section bg-white shadow-sm rounded-lg p-4 p-md-5">
-                <h1 class="mb-4 text-center" data-aos="fade-up">Campus Tour</h1>
-                <p class="lead text-center mb-5" data-aos="fade-up" data-aos-delay="100">Discover our state-of-the-art facilities and beautiful campus grounds.</p>
-                
-                <!-- Gallery: Images of campus locations -->
-                <div class="row mb-5" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="images/hero.jpg" alt="Campus" class="card-img-top">
-                            <div class="card-body">
-                                <p class="card-text">Explore our campus with an interactive virtual tour.</p>
-                                <a href="#virtual-tour" class="btn btn-sm btn-outline-primary">View Virtual Tour</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="images/front.jpg" alt="Campus" class="card-img-top">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-quote fs-4 text-primary me-2"></i>
-                                    <p class="card-text fst-italic mb-0">"The campus has excellent facilities and a welcoming atmosphere."</p>
-                                </div>
-                                <div class="text-end">
-                                    <small class="text-muted">– Maria, Current Student</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Campus Map: Embedded Google Maps for campus navigation -->
                 <div class="campus-map mt-5" data-aos="fade-up" data-aos-delay="300">
                     <h2 class="text-center mb-4">INTERACTIVE CAMPUS MAP</h2>
@@ -128,7 +98,63 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Google Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiTe13HtEMtgz_fHiPu00RUmol0VpBSek&callback=initMap" async defer></script>
+    
     <!-- Custom Scripts -->
-    <script src="js/scripts.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Google Maps initialization function
+        function initMap() {
+            // Set the coordinates for University of Wolverhampton
+            const universityCenter = { lat: 52.5873, lng: -2.1274 };
+            
+            // Create the map centered on the university
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: universityCenter,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: true,
+                streetViewControl: true,
+                zoomControl: true,
+            });
+            
+            // Define locations for the markers
+            const locations = [
+                { name: "Main Building", position: { lat: 52.5875, lng: -2.1276 }, number: 1 },
+                { name: "Student Union", position: { lat: 52.5869, lng: -2.1285 }, number: 2 },
+                { name: "Library", position: { lat: 52.5880, lng: -2.1265 }, number: 3 },
+                { name: "Sports Center", position: { lat: 52.5865, lng: -2.1295 }, number: 4 }
+            ];
+            
+            // Create markers and info windows for each location
+            locations.forEach(location => {
+                // Create a marker
+                const marker = new google.maps.Marker({
+                    position: location.position,
+                    map: map,
+                    title: location.name,
+                    label: { text: location.number.toString(), color: "white" },
+                    animation: google.maps.Animation.DROP
+                });
+                
+                // Create info window content
+                const infoContent = `<div class="info-window"><strong>${location.name}</strong></div>`;
+                
+                // Create info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: infoContent
+                });
+                
+                // Add click event to open info window
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
