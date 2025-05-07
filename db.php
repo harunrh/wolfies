@@ -1,9 +1,9 @@
 <?php
 // Database credentials
 $host = 'localhost';
-$username = 'u771031651_wolfies';
-$password = 'f:x0gX3E/';
-$database = 'u771031651_wolfies';
+$username = '';
+$password = '';
+$database = '';
 
 // MySQLi connection with error handling
 $db = new mysqli($host, $username, $password, $database);
